@@ -45,10 +45,9 @@ public class ItemChocolateMilk extends ItemFood{
 	@Override
 	@SideOnly(Side.CLIENT)
 	
-	    public void updateIcons(IconRegister iconRegister) {
-
-	        iconIndex = iconRegister.registerIcon(iconname);
-        }
+	public void registerIcons(IconRegister iconRegister) {
+        itemIcon = iconRegister.registerIcon(iconname);
+    }
 	public EnumAction getItemUseAction(ItemStack par1ItemStack)
     {
         return EnumAction.drink;

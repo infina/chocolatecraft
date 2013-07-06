@@ -43,9 +43,8 @@ public class ItemSmore extends ItemFood{
 	@Override
 	@SideOnly(Side.CLIENT)
 	
-	    public void updateIcons(IconRegister iconRegister) {
-
-	        iconIndex = iconRegister.registerIcon(iconname);
-        }
+	public void registerIcons(IconRegister iconRegister) {
+        itemIcon = iconRegister.registerIcon(iconname);
+    }
 
 }

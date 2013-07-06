@@ -79,9 +79,6 @@ public class EntityInteractionHandler {
 				}
 			}
 		}
-			else if (event.target instanceof EntityWolf && event.entityPlayer.getHeldItem() == null){
-				event.target.interact(event.entityPlayer);
-			}
 			else if (event.target instanceof EntityVillager && event.entityPlayer.getHeldItem() != null){
 			if (event.entityPlayer.getHeldItem().getItemName().equals("item.chocolatebar")){
 				EntityVillager villager = (EntityVillager) event.target;

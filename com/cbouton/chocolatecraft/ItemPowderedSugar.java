@@ -43,9 +43,7 @@ public class ItemPowderedSugar extends Item{
 	@Override
 	@SideOnly(Side.CLIENT)
 	
-	    public void updateIcons(IconRegister iconRegister) {
-
-	        iconIndex = iconRegister.registerIcon(iconname);
-        }
-
+	public void registerIcons(IconRegister iconRegister) {
+        itemIcon = iconRegister.registerIcon(iconname);
+    }
 }
