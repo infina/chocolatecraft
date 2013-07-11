@@ -26,7 +26,20 @@ package com.cbouton.chocolatecraft;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
 
+import com.cbouton.chocolatecraft.fluids.FluidChocolate;
+import com.cbouton.chocolatecraft.items.ItemChocolate;
+import com.cbouton.chocolatecraft.items.ItemChocolateBar;
+import com.cbouton.chocolatecraft.items.ItemChocolateMilk;
+import com.cbouton.chocolatecraft.items.ItemGelatin;
+import com.cbouton.chocolatecraft.items.ItemGraham;
+import com.cbouton.chocolatecraft.items.ItemHotChocolateMarshmallow;
+import com.cbouton.chocolatecraft.items.ItemHotCocoa;
+import com.cbouton.chocolatecraft.items.ItemMarshmallow;
+import com.cbouton.chocolatecraft.items.ItemPowderedSugar;
+import com.cbouton.chocolatecraft.items.ItemRoastedMarshmallow;
+import com.cbouton.chocolatecraft.items.ItemSmore;
 import com.cbouton.chocolatecraft.lib.ItemIds;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -46,6 +59,7 @@ public class ModItems {
 		Item ItemRoastedMarshmallow = new ItemRoastedMarshmallow(ItemIds.ITEM_ROASTEDMARSHMALLOW, 4, false);
 		Item ItemGraham = new ItemGraham(ItemIds.ITEM_GRAHAM, 4, false);
 		Item ItemSmore = new ItemSmore(ItemIds.ITEM_SMORE, 10, false);
+		Fluid FluidChocolate = new FluidChocolate("FluidChocolate");
 		
 		ItemStack chocolate = new ItemStack(ItemChocolate);
 		ItemStack powderedsugar = new ItemStack(ItemPowderedSugar);

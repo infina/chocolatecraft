@@ -1,0 +1,17 @@
+{
+"modid": "Chocolatecraft",
+"name": "Chocolatecraft 2",
+"description": "Increasing the uses for cocoa beans by adding chocolate items.",
+"version": "Pre1a",
+"credits": "Created by _infina_, Thanks to Vswe for the summer courses",
+"logoFile": "",
+"mcversion": "1.6.2",
+"url": "http://www.cbouton.com/ChocolateCraft",
+"updateUrl": "",
+"authors": [ "_infina_" ],
+"parent":"",
+"screenshots": [],
+"dependencies": [
+"mod_MinecraftForge"
+]
+}

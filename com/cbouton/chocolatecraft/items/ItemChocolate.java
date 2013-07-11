@@ -22,27 +22,29 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
-/*package com.cbouton.chocolatecraft;
+package com.cbouton.chocolatecraft.items;
 
-import java.util.Random;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 
-import com.cbouton.chocolatecraft.lib.BlockIds;
+public class ItemChocolate extends Item{
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-
-public class BlockMixer extends Block{
-	//private final boolean isActive;
-
-	public BlockMixer(int id, int texture, Material material) {
-		super(id, texture, material);
+	public ItemChocolate(int id) {
+		super(id);
+		setMaxStackSize(64);
+		setCreativeTab(CreativeTabs.tabFood);
+		setUnlocalizedName("chocolate");
+				
 	}
-	public int idDropped(int par1, Random par2Random, int par3)
-    {
-        return BlockIds.BLOCK_MIXER;
-    }
+	String iconname = "chocolatecraft:chocolate";
+	@Override
+	@SideOnly(Side.CLIENT)
 	
+	    public void registerIcons(IconRegister iconRegister) {
+	        itemIcon = iconRegister.registerIcon(iconname);
+        }
 
-
-
-}*/
+}

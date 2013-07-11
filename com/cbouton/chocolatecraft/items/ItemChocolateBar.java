@@ -22,29 +22,34 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
-package com.cbouton.chocolatecraft;
+package com.cbouton.chocolatecraft.items;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.entity.player.EntityInteractEvent;
 
-public class ItemGelatin extends Item{
+public class ItemChocolateBar extends ItemFood{
 
-	protected ItemGelatin(int id) {
-		super(id);
-		setMaxStackSize(64);
-		setCreativeTab(CreativeTabs.tabMisc);
-		setUnlocalizedName("gelatin");
+	public ItemChocolateBar(int id, int hunger, boolean wolfeats) {
+		super(id, hunger, wolfeats);
+		setMaxStackSize(16);
+		setCreativeTab(CreativeTabs.tabFood);
+		setUnlocalizedName("chocolatebar");
 		
 	}
-	String iconname = "chocolatecraft:gelatin";
+	String iconname = "chocolatecraft:chocolatebar";
 	@Override
 	@SideOnly(Side.CLIENT)
 	
 	public void registerIcons(IconRegister iconRegister) {
         itemIcon = iconRegister.registerIcon(iconname);
     }
+	
 
 }

@@ -22,7 +22,7 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
-package com.cbouton.chocolatecraft;
+package com.cbouton.chocolatecraft.items;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -31,16 +31,15 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 
-public class ItemRoastedMarshmallow extends ItemFood{
+public class ItemSmore extends ItemFood{
 
-	protected ItemRoastedMarshmallow(int id, int hunger, boolean alwaysEdible) {
-		super(id, hunger, alwaysEdible);
-		setMaxStackSize(32);
+	public ItemSmore(int id, int hunger, boolean edible) {
+		super(id, hunger, edible);
+		setMaxStackSize(16);
 		setCreativeTab(CreativeTabs.tabFood);
-		setUnlocalizedName("roastedmarshmallow");
-		
+		setUnlocalizedName("smore");
 	}
-	String iconname = "chocolatecraft:roastedmarshmallow";
+	String iconname = "chocolatecraft:smore";
 	@Override
 	@SideOnly(Side.CLIENT)
 	

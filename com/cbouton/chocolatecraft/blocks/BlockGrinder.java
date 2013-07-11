@@ -1,3 +1,4 @@
+package com.cbouton.chocolatecraft.blocks;
 /*Copyright 2012, infina (C. Bouton)
 All rights reserved.
 

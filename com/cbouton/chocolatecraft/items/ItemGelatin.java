@@ -22,35 +22,29 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
-package com.cbouton.chocolatecraft;
+package com.cbouton.chocolatecraft.items;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemStack;
 
-public class ItemChocolateMilk extends ItemFood{
+public class ItemGelatin extends Item{
 
-	protected ItemChocolateMilk(int id, int hunger, boolean alwaysEdible) {
-		super(id, hunger, alwaysEdible);
-		setMaxStackSize(1);
-		setCreativeTab(CreativeTabs.tabFood);
-		setUnlocalizedName("chocolatemilk");
+	public ItemGelatin(int id) {
+		super(id);
+		setMaxStackSize(64);
+		setCreativeTab(CreativeTabs.tabMisc);
+		setUnlocalizedName("gelatin");
+		
 	}
-	String iconname = "chocolatecraft:chocolatemilk";
+	String iconname = "chocolatecraft:gelatin";
 	@Override
 	@SideOnly(Side.CLIENT)
 	
 	public void registerIcons(IconRegister iconRegister) {
         itemIcon = iconRegister.registerIcon(iconname);
-    }
-	public EnumAction getItemUseAction(ItemStack par1ItemStack)
-    {
-        return EnumAction.drink;
     }
 
 }

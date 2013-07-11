@@ -22,7 +22,7 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
-package com.cbouton.chocolatecraft;
+package com.cbouton.chocolatecraft.items;
 
 import com.cbouton.chocolatecraft.lib.ItemIds;
 
@@ -38,7 +38,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemHotCocoa extends ItemFood{
 
-	protected ItemHotCocoa(int id, int hunger, boolean alwaysEdible) {
+	public ItemHotCocoa(int id, int hunger, boolean alwaysEdible) {
 		super(id, hunger, alwaysEdible);
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabFood);

@@ -22,35 +22,29 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
-package com.cbouton.chocolatecraft;
+package com.cbouton.chocolatecraft.items;
 
-import com.cbouton.chocolatecraft.lib.BlockIds;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 
-import net.minecraft.block.BlockStationary;
-import net.minecraft.block.material.Material;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.liquids.IBlockLiquid;
-import net.minecraftforge.liquids.ILiquid;
+public class ItemMarshmallow extends Item{
 
-public class LiquidChocolate extends BlockStationary implements ILiquid {
-
-	protected LiquidChocolate(int par1, Material par2Material) {
-		super(par1, par2Material);
+	public ItemMarshmallow(int id) {
+		super(id);
+		setMaxStackSize(64);
+		setCreativeTab(CreativeTabs.tabFood);
+		setUnlocalizedName("marshmallow");
+		
 	}
-
+	String iconname = "chocolatecraft:marshmallow";
 	@Override
-	public int stillLiquidId() {
-		return BlockIds.LIQUID_CHOCOLATE;
-	}
-
-	@Override
-	public boolean isMetaSensitive() {
-		return false;
-	}
-
-	@Override
-	public int stillLiquidMeta() {
-		return 0;
-	}
+	@SideOnly(Side.CLIENT)
+	
+	public void registerIcons(IconRegister iconRegister) {
+        itemIcon = iconRegister.registerIcon(iconname);
+    }
 
 }
