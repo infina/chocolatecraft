@@ -40,7 +40,7 @@ import com.cbouton.chocolatecraft.items.ItemMarshmallow;
 import com.cbouton.chocolatecraft.items.ItemPowderedSugar;
 import com.cbouton.chocolatecraft.items.ItemRoastedMarshmallow;
 import com.cbouton.chocolatecraft.items.ItemSmore;
-import com.cbouton.chocolatecraft.lib.ItemIds;
+import com.cbouton.chocolatecraft.lib.ItemStatics;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -48,18 +48,17 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class ModItems {
 
 	public static void init() {
-		Item ItemChocolate = new ItemChocolate(ItemIds.ITEM_CHOCOLATE);
-		Item ItemPowderedSugar = new ItemPowderedSugar(ItemIds.ITEM_POWDEREDSUGAR);
-		Item ItemChocolateBar = new ItemChocolateBar(ItemIds.ITEM_CHOCOLATEBAR, 10, true);
-		Item ItemHotCocoa = new ItemHotCocoa(ItemIds.ITEM_HOTCOCOA, 10, false);
-		Item ItemHotChocoMarsh = new ItemHotChocolateMarshmallow(ItemIds.ITEM_HOTCHOCMARSH, 15, false);
-		Item ItemMarshmallow = new ItemMarshmallow(ItemIds.ITEM_MARSHMALLOW);
-		Item ItemGelatin = new ItemGelatin(ItemIds.ITEM_GELATIN);
-		Item ItemChocolateMilk = new ItemChocolateMilk(ItemIds.ITEM_CHOCOLATEMILK, 4, false);
-		Item ItemRoastedMarshmallow = new ItemRoastedMarshmallow(ItemIds.ITEM_ROASTEDMARSHMALLOW, 4, false);
-		Item ItemGraham = new ItemGraham(ItemIds.ITEM_GRAHAM, 4, false);
-		Item ItemSmore = new ItemSmore(ItemIds.ITEM_SMORE, 10, false);
-		Fluid FluidChocolate = new FluidChocolate("FluidChocolate");
+		Item ItemChocolate = new ItemChocolate(ItemStatics.ITEM_CHOCOLATE);
+		Item ItemPowderedSugar = new ItemPowderedSugar(ItemStatics.ITEM_POWDEREDSUGAR);
+		Item ItemChocolateBar = new ItemChocolateBar(ItemStatics.ITEM_CHOCOLATEBAR, 10, true);
+		Item ItemHotCocoa = new ItemHotCocoa(ItemStatics.ITEM_HOTCOCOA, 10, false);
+		Item ItemHotChocoMarsh = new ItemHotChocolateMarshmallow(ItemStatics.ITEM_HOTCHOCMARSH, 15, false);
+		Item ItemMarshmallow = new ItemMarshmallow(ItemStatics.ITEM_MARSHMALLOW);
+		Item ItemGelatin = new ItemGelatin(ItemStatics.ITEM_GELATIN);
+		Item ItemChocolateMilk = new ItemChocolateMilk(ItemStatics.ITEM_CHOCOLATEMILK, 4, false);
+		Item ItemRoastedMarshmallow = new ItemRoastedMarshmallow(ItemStatics.ITEM_ROASTEDMARSHMALLOW, 4, false);
+		Item ItemGraham = new ItemGraham(ItemStatics.ITEM_GRAHAM, 4, false);
+		Item ItemSmore = new ItemSmore(ItemStatics.ITEM_SMORE, 10, false);
 		
 		ItemStack chocolate = new ItemStack(ItemChocolate);
 		ItemStack powderedsugar = new ItemStack(ItemPowderedSugar);

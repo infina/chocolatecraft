@@ -24,7 +24,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
 package com.cbouton.chocolatecraft.items;
 
-import com.cbouton.chocolatecraft.lib.ItemIds;
+import com.cbouton.chocolatecraft.lib.ItemStatics;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -43,7 +43,7 @@ public class ItemHotCocoa extends ItemFood{
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabFood);
 		setUnlocalizedName("hotcocoa");
-		setPotionEffect(1, ItemIds.ITEM_HOTCOCOA_EFFECT_TIME, 3, 1.0F);
+		setPotionEffect(1, ItemStatics.ITEM_HOTCOCOA_EFFECT_TIME, 3, 1.0F);
 	}
 	String iconname = "chocolatecraft:hotcocoa";
 	@Override

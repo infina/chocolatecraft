@@ -1,4 +1,3 @@
-package com.cbouton.chocolatecraft.blocks;
 /*Copyright 2012, infina (C. Bouton)
 All rights reserved.
 
@@ -23,99 +22,138 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
-/*package com.cbouton.chocolatecraft;
-
+package com.cbouton.chocolatecraft.blocks;
+import java.util.HashMap;
 import java.util.Random;
+import java.util.logging.Level;
 
-import com.cbouton.chocolatecraft.lib.BlockIds;
+import com.cbouton.chocolatecraft.lib.BlockStatics;
+import com.cbouton.chocolatecraft.lib.Reference;
+import com.cbouton.chocolatecraft.utils.*;
 
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
 
 
 
 public class BlockGrinder extends Block{
-	private final boolean isActive = false;
+	public HashMap grinderactive = new HashMap();
 
-	public BlockGrinder(int id, int texture, Material material) {
-		super(id, material);
-		setUnlocalizedName("blockgrinder");
+	public BlockGrinder(int id) {
+		super(id, Material.iron);
+		setUnlocalizedName(BlockStatics.BLOCK_GRINDER_UNLOCALIZEDNAME);
 		setStepSound(soundMetalFootstep);
 		setHardness(5.0F);
-		setCreativeTab(CreativeTabs.tabDecorations);
+		setCreativeTab(CreativeTabs.tabRedstone);
 	}
 	
-	public int idDropped(int par1, Random par2Random, int par3)
-    {
-        return BlockIds.BLOCK_GRINDER;
-    }
-	public void onBlockAdded(World par1World, int par2, int par3, int par4)
-    {
-        super.onBlockAdded(par1World, par2, par3, par4);
-        this.setDefaultDirection(par1World, par2, par3, par4);
-    }
-	private void setDefaultDirection(World par1World, int par2, int par3, int par4)
-    {
-        if (!par1World.isRemote)
-        {
-            int var5 = par1World.getBlockId(par2, par3, par4 - 1);
-            int var6 = par1World.getBlockId(par2, par3, par4 + 1);
-            int var7 = par1World.getBlockId(par2 - 1, par3, par4);
-            int var8 = par1World.getBlockId(par2 + 1, par3, par4);
-            byte var9 = 3;
-
-            if (Block.opaqueCubeLookup[var5] && !Block.opaqueCubeLookup[var6])
-            {
-                var9 = 3;
-            }
-
-            if (Block.opaqueCubeLookup[var6] && !Block.opaqueCubeLookup[var5])
-            {
-                var9 = 2;
-            }
-
-            if (Block.opaqueCubeLookup[var7] && !Block.opaqueCubeLookup[var8])
-            {
-                var9 = 5;
-            }
-
-            if (Block.opaqueCubeLookup[var8] && !Block.opaqueCubeLookup[var7])
-            {
-                var9 = 4;
-            }
-
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, var9, var8);
-        }
-    }
+	public void setactive(World world, int x, int y, int z){
+    	String block = world.toString() + "," + x + "," + y + "," + z;
+    	grinderactive.put(block, true);
+    	int newMeta = world.getBlockMetadata(x, y, z) + 7;
+		world.setBlockMetadataWithNotify(x, y, z, newMeta, 1);
+	}
+    
+    public void setinactive(World world, int x, int y, int z){
+    	String block = world.toString() + "," + x + "," + y + "," + z;
+    	grinderactive.remove(block);
+    	int newMeta = world.getBlockMetadata(x, y, z) - 7;
+		world.setBlockMetadataWithNotify(x, y, z, newMeta, 2);
+	}
+    
+    public void toggleactive(World world, int x, int y, int z){
+    	String block = world.toString() + "," + x + "," + y + "," + z;
+    	if (getactive(world, x, y, z)){
+    		setinactive(world, x, y, z);
+    	} else {
+    		setactive(world, x, y, z);
+    	}
+		
+	}
+    
+    public boolean getactive(World world, int x, int y, int z){
+    	String block = world.toString() + "," + x + "," + y + "," + z;
+    	boolean active = grinderactive.containsKey(block);
+		return active;
+	}
+	
+    @SideOnly(Side.CLIENT)
+    private Icon topIcon;
+    @SideOnly(Side.CLIENT)
+    private Icon frontIcon;
+    @SideOnly(Side.CLIENT)
+    private Icon activetopIcon;
+    @SideOnly(Side.CLIENT)
+    private Icon activefrontIcon;
+    @SideOnly(Side.CLIENT)
+    private Icon sideIcon;
 
     @SideOnly(Side.CLIENT)
+    @Override
+    public void registerIcons(IconRegister icons){
+    	topIcon = icons.registerIcon(Reference.MOD_ID + ":" + BlockStatics.BLOCK_GRINDER_TOP);
+    	frontIcon = icons.registerIcon(Reference.MOD_ID + ":" + BlockStatics.BLOCK_GRINDER_FRONT);
+    	activetopIcon = icons.registerIcon(Reference.MOD_ID + ":" + BlockStatics.BLOCK_GRINDER_TOP_ACTIVE);
+    	activefrontIcon = icons.registerIcon(Reference.MOD_ID + ":" + BlockStatics.BLOCK_GRINDER_FRONT_ACTIVE);
+    	sideIcon = icons.registerIcon(Reference.MOD_ID + ":" + BlockStatics.BLOCK_MACHINE_SIDES);
+    }
+    
+    @Override
+    public void onBlockPlacedBy(World world, int i, int j, int k, EntityLivingBase entityliving, ItemStack stack) {
+		super.onBlockPlacedBy(world, i, j, k, entityliving, stack);
 
-    /**
-     * Retrieves the block texture to use based on the display side. Args: iBlockAccess, x, y, z, side
-     *//*
-    public int getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
-    {
-        if (par5 == 1)
-        {
-            return this.blockIndexInTexture + 1;
-        }
-        else if (par5 == 0)
-        {
-            return this.blockIndexInTexture + 1;
-        }
-        else
-        {
-            int var6 = par1IBlockAccess.getBlockMetadata(par2, par3, par4);
-            return par5 != var6 ? this.blockIndexInTexture : (this.blockIndexInTexture + 2);
-        }
+		ForgeDirection orientation = Utils.get2dOrientation(new Position(entityliving.posX, entityliving.posY, entityliving.posZ), new Position(i, j, k));
+
+		world.setBlockMetadataWithNotify(i, j, k, orientation.getOpposite().ordinal(),1);
+    }
+    
+    @Override
+    public void onNeighborBlockChange(World world, int x, int y, int z, int id){
+    	if (!world.isRemote && world.isBlockIndirectlyGettingPowered(x, y, z) && world.getBlockMetadata(x, y, z) < 7){
+    		setactive(world, x, y, z);
+    	} else if (!world.isRemote && world.getBlockMetadata(x, y, z) >= 7){
+    		setinactive(world, x, y, z);
+    	}
+    }
+    
+    @SideOnly(Side.CLIENT)
+    @Override
+    public Icon getIcon(int side, int metaData){
+    	if (side == 0){
+    		return sideIcon;
+    	}
+    	else if (side == 1 && metaData < 7){
+    		return topIcon;
+    	}
+    	else if (side == 1 && metaData >= 7){
+    		return activetopIcon;
+    	}
+    	else if (metaData == 0 && side == 3){
+			return frontIcon;
+    	}
+
+    	else if (side == metaData && side > 1) {
+			return frontIcon;
+			
+		}
+    	else if (side == metaData-7 && side > 1) {
+			return activefrontIcon;
+		}
+    	else{
+    		return sideIcon;
+    	}
     }
 
-
-
-}*/
+}

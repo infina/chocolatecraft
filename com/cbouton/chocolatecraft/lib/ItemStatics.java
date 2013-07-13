@@ -24,16 +24,33 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
 package com.cbouton.chocolatecraft.lib;
 
-public class BlockIds {
+public class ItemStatics {
+	public static int ITEM_CHOCOLATE_DEFAULT = 9000;
+	public static int ITEM_POWDEREDSUGAR_DEFAULT = 9001;
+	public static int ITEM_CHOCOLATEBAR_DEFAULT = 9002;
+	public static int ITEM_HOTCOCOA_DEFAULT = 9003;
+	public static int ITEM_HOTCHOCMARSH_DEFAULT = 9004;
+	public static int ITEM_MARSHMALLOW_DEFAULT = 9005;
+	public static int ITEM_GELATIN_DEFAULT = 9006;
+	public static int ITEM_CHOCOLATEMILK_DEFAULT = 9007;
+	public static int ITEM_ROASTEDMARSHMALLOW_DEFAULT = 9008;
+	public static int ITEM_GRAHAM_DEFAULT = 9009;
+	public static int ITEM_SMORE_DEFAULT = 9010;
+	public static int ITEM_HOTCOCOA_EFFECT_TIME_DEFAULT = 300;
+	public static int ITEM_HOTCHOCMARSH_EFFECT_TIME_DEFAULT = 600;
 	
-	public static int BLOCK_GRINDER_DEFAULT = 2000;
-	public static int BLOCK_SEPARATOR_DEFAULT = 2001;
-	public static int BLOCK_MIXER_DEFAULT = 2002;
-	public static int LIQUID_CHOCOLATE_DEFAULT = 2003;
+	public static int ITEM_CHOCOLATE;
+	public static int ITEM_POWDEREDSUGAR;
+	public static int ITEM_CHOCOLATEBAR;
+	public static int ITEM_HOTCOCOA;
+	public static int ITEM_HOTCHOCMARSH;
+	public static int ITEM_MARSHMALLOW;
+	public static int ITEM_GELATIN;
+	public static int ITEM_CHOCOLATEMILK;
+	public static int ITEM_ROASTEDMARSHMALLOW;
+	public static int ITEM_GRAHAM;
+	public static int ITEM_SMORE;
+	public static int ITEM_HOTCOCOA_EFFECT_TIME;
+	public static int ITEM_HOTCHOCMARSH_EFFECT_TIME;
 
-	
-	public static int BLOCK_GRINDER;
-	public static int BLOCK_SEPARATOR;
-	public static int BLOCK_MIXER;
-	public static int LIQUID_CHOCOLATE;
 }

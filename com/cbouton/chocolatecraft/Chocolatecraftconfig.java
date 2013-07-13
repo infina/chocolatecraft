@@ -27,9 +27,10 @@ package com.cbouton.chocolatecraft;
 import java.io.File;
 import java.util.logging.Level;
 
-import com.cbouton.chocolatecraft.lib.BlockIds;
+import com.cbouton.chocolatecraft.lib.BlockStatics;
 import com.cbouton.chocolatecraft.lib.ChocolatecraftBooleans;
-import com.cbouton.chocolatecraft.lib.ItemIds;
+import com.cbouton.chocolatecraft.lib.FluidStatics;
+import com.cbouton.chocolatecraft.lib.ItemStatics;
 
 import cpw.mods.fml.common.FMLLog;
 
@@ -43,57 +44,60 @@ public class Chocolatecraftconfig {
 		Configuration configuration = new Configuration(configFile);
 		try {
             configuration.load();
-            ItemIds.ITEM_CHOCOLATE = configuration
-            		.getItem("Chocolate", ItemIds.ITEM_CHOCOLATE_DEFAULT)
-            		.getInt(ItemIds.ITEM_CHOCOLATE_DEFAULT);
-            ItemIds.ITEM_POWDEREDSUGAR = configuration
-            		.getItem("Powdered Sugar", ItemIds.ITEM_POWDEREDSUGAR_DEFAULT)
-            		.getInt(ItemIds.ITEM_POWDEREDSUGAR_DEFAULT);
-            ItemIds.ITEM_CHOCOLATEBAR = configuration
-            		.getItem("Chocolate Bar", ItemIds.ITEM_CHOCOLATEBAR_DEFAULT)
-            		.getInt(ItemIds.ITEM_CHOCOLATEBAR_DEFAULT);
-            ItemIds.ITEM_HOTCOCOA = configuration
-            		.getItem("Hot Chocolate", ItemIds.ITEM_HOTCOCOA_DEFAULT)
-            		.getInt(ItemIds.ITEM_HOTCOCOA_DEFAULT);
-            ItemIds.ITEM_HOTCHOCMARSH = configuration
-            		.getItem("Hot Chocolate w/ Marshmallow", ItemIds.ITEM_HOTCHOCMARSH_DEFAULT)
-            		.getInt(ItemIds.ITEM_CHOCOLATE_DEFAULT);
-            ItemIds.ITEM_MARSHMALLOW = configuration
-            		.getItem("Marshmallow", ItemIds.ITEM_MARSHMALLOW_DEFAULT)
-            		.getInt(ItemIds.ITEM_MARSHMALLOW_DEFAULT);
-            ItemIds.ITEM_GELATIN = configuration
-            		.getItem("Gelatin", ItemIds.ITEM_GELATIN_DEFAULT)
-            		.getInt(ItemIds.ITEM_GELATIN_DEFAULT);
-            ItemIds.ITEM_CHOCOLATEMILK = configuration
-            		.getItem("Chocolate Milk", ItemIds.ITEM_CHOCOLATEMILK_DEFAULT)
-            		.getInt(ItemIds.ITEM_CHOCOLATEMILK_DEFAULT);
-            ItemIds.ITEM_ROASTEDMARSHMALLOW = configuration
-            		.getItem("Roasted Marshmallow", ItemIds.ITEM_ROASTEDMARSHMALLOW_DEFAULT)
-            		.getInt(ItemIds.ITEM_ROASTEDMARSHMALLOW_DEFAULT);
-            ItemIds.ITEM_GRAHAM = configuration
-            		.getItem("Graham Cracker", ItemIds.ITEM_GRAHAM_DEFAULT)
-            		.getInt(ItemIds.ITEM_GRAHAM_DEFAULT);
-            ItemIds.ITEM_SMORE = configuration
-            		.getItem("S'more", ItemIds.ITEM_SMORE_DEFAULT)
-            		.getInt(ItemIds.ITEM_SMORE_DEFAULT);
-            ItemIds.ITEM_HOTCHOCMARSH_EFFECT_TIME = configuration
-            		.getItem("Effect Time 2", ItemIds.ITEM_HOTCHOCMARSH_EFFECT_TIME_DEFAULT)
-            		.getInt(ItemIds.ITEM_HOTCHOCMARSH_EFFECT_TIME_DEFAULT);
-            ItemIds.ITEM_HOTCOCOA_EFFECT_TIME = configuration
-            		.getItem("Effect Time 1", ItemIds.ITEM_HOTCOCOA_EFFECT_TIME_DEFAULT)
-            		.getInt(ItemIds.ITEM_HOTCOCOA_EFFECT_TIME_DEFAULT);
-            BlockIds.BLOCK_GRINDER = configuration
-            		.getBlock("Grinder", BlockIds.BLOCK_GRINDER_DEFAULT)
-            		.getInt(BlockIds.BLOCK_GRINDER_DEFAULT);
-            BlockIds.BLOCK_MIXER = configuration
-            		.getBlock("Mixer", BlockIds.BLOCK_MIXER_DEFAULT)
-            		.getInt(BlockIds.BLOCK_MIXER_DEFAULT);
-            BlockIds.BLOCK_SEPARATOR = configuration
-            		.getBlock("Separator", BlockIds.BLOCK_SEPARATOR_DEFAULT)
-            		.getInt(BlockIds.BLOCK_SEPARATOR_DEFAULT);
-            BlockIds.LIQUID_CHOCOLATE = configuration
-            		.getBlock("Liquid Chocolate", BlockIds.LIQUID_CHOCOLATE_DEFAULT)
-            		.getInt(BlockIds.LIQUID_CHOCOLATE_DEFAULT);
+            ItemStatics.ITEM_CHOCOLATE = configuration
+            		.getItem("Chocolate", ItemStatics.ITEM_CHOCOLATE_DEFAULT)
+            		.getInt(ItemStatics.ITEM_CHOCOLATE_DEFAULT) - 256;
+            ItemStatics.ITEM_POWDEREDSUGAR = configuration
+            		.getItem("Powdered Sugar", ItemStatics.ITEM_POWDEREDSUGAR_DEFAULT)
+            		.getInt(ItemStatics.ITEM_POWDEREDSUGAR_DEFAULT) - 256;
+            ItemStatics.ITEM_CHOCOLATEBAR = configuration
+            		.getItem("Chocolate Bar", ItemStatics.ITEM_CHOCOLATEBAR_DEFAULT)
+            		.getInt(ItemStatics.ITEM_CHOCOLATEBAR_DEFAULT) - 256;
+            ItemStatics.ITEM_HOTCOCOA = configuration
+            		.getItem("Hot Chocolate", ItemStatics.ITEM_HOTCOCOA_DEFAULT)
+            		.getInt(ItemStatics.ITEM_HOTCOCOA_DEFAULT) - 256;
+            ItemStatics.ITEM_HOTCHOCMARSH = configuration
+            		.getItem("Hot Chocolate w/ Marshmallow", ItemStatics.ITEM_HOTCHOCMARSH_DEFAULT)
+            		.getInt(ItemStatics.ITEM_CHOCOLATE_DEFAULT) - 256;
+            ItemStatics.ITEM_MARSHMALLOW = configuration
+            		.getItem("Marshmallow", ItemStatics.ITEM_MARSHMALLOW_DEFAULT)
+            		.getInt(ItemStatics.ITEM_MARSHMALLOW_DEFAULT) - 256;
+            ItemStatics.ITEM_GELATIN = configuration
+            		.getItem("Gelatin", ItemStatics.ITEM_GELATIN_DEFAULT)
+            		.getInt(ItemStatics.ITEM_GELATIN_DEFAULT) - 256;
+            ItemStatics.ITEM_CHOCOLATEMILK = configuration
+            		.getItem("Chocolate Milk", ItemStatics.ITEM_CHOCOLATEMILK_DEFAULT)
+            		.getInt(ItemStatics.ITEM_CHOCOLATEMILK_DEFAULT) - 256;
+            ItemStatics.ITEM_ROASTEDMARSHMALLOW = configuration
+            		.getItem("Roasted Marshmallow", ItemStatics.ITEM_ROASTEDMARSHMALLOW_DEFAULT)
+            		.getInt(ItemStatics.ITEM_ROASTEDMARSHMALLOW_DEFAULT) - 256;
+            ItemStatics.ITEM_GRAHAM = configuration
+            		.getItem("Graham Cracker", ItemStatics.ITEM_GRAHAM_DEFAULT)
+            		.getInt(ItemStatics.ITEM_GRAHAM_DEFAULT) - 256;
+            ItemStatics.ITEM_SMORE = configuration
+            		.getItem("S'more", ItemStatics.ITEM_SMORE_DEFAULT)
+            		.getInt(ItemStatics.ITEM_SMORE_DEFAULT) - 256;
+            ItemStatics.ITEM_HOTCHOCMARSH_EFFECT_TIME = configuration
+            		.getItem("Effect Time 2", ItemStatics.ITEM_HOTCHOCMARSH_EFFECT_TIME_DEFAULT)
+            		.getInt(ItemStatics.ITEM_HOTCHOCMARSH_EFFECT_TIME_DEFAULT);
+            ItemStatics.ITEM_HOTCOCOA_EFFECT_TIME = configuration
+            		.getItem("Effect Time 1", ItemStatics.ITEM_HOTCOCOA_EFFECT_TIME_DEFAULT)
+            		.getInt(ItemStatics.ITEM_HOTCOCOA_EFFECT_TIME_DEFAULT);
+            BlockStatics.BLOCK_GRINDER = configuration
+            		.getBlock("Grinder", BlockStatics.BLOCK_GRINDER_DEFAULT)
+            		.getInt(BlockStatics.BLOCK_GRINDER_DEFAULT);
+            BlockStatics.BLOCK_MIXER = configuration
+            		.getBlock("Mixer", BlockStatics.BLOCK_MIXER_DEFAULT)
+            		.getInt(BlockStatics.BLOCK_MIXER_DEFAULT);
+            BlockStatics.BLOCK_SEPARATOR = configuration
+            		.getBlock("Separator", BlockStatics.BLOCK_SEPARATOR_DEFAULT)
+            		.getInt(BlockStatics.BLOCK_SEPARATOR_DEFAULT);
+            BlockStatics.BLOCK_LIQUID_CHOCOLATE = configuration
+            		.getBlock("Liquid Chocolate", BlockStatics.BLOCK_LIQUID_CHOCOLATE_DEFAULT)
+            		.getInt(BlockStatics.BLOCK_LIQUID_CHOCOLATE_DEFAULT);
+            FluidStatics.FLUID_CHOCOLATE = configuration
+            		.getBlock("Fluid Chocolate", FluidStatics.FLUID_CHOCOLATE_DEFAULT)
+            		.getInt(FluidStatics.FLUID_CHOCOLATE_DEFAULT);
             ChocolatecraftBooleans.LOG_POISON = configuration
             		.get("Log Options", "Poison Logger", ChocolatecraftBooleans.LOG_POISON_DEFAULT)
             		.getBoolean(ChocolatecraftBooleans.LOG_POISON_DEFAULT);

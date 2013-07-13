@@ -31,6 +31,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
@@ -44,17 +46,24 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import com.cbouton.chocolatecraft.lib.ItemIds;
+
+import com.cbouton.chocolatecraft.fluids.FluidChocolate;
+import com.cbouton.chocolatecraft.handlers.EntityInteractionHandler;
+import com.cbouton.chocolatecraft.lib.FluidStatics;
+import com.cbouton.chocolatecraft.lib.ItemStatics;
+import com.cbouton.chocolatecraft.lib.Reference;
 import com.cbouton.chocolatecraft.Chocolatecraftconfig;
 import com.cbouton.chocolatecraft.ModItems;
 
-@Mod(modid="Chocolatecraft", name="Chocolatecraft", version="1.3.0")
+@Mod(modid=Reference.MOD_ID, name=Reference.MOD_NAME, version=Reference.MOD_VERSION)
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
 public class Chocolatecraft {
-	@Instance("Chocolatecraft")
+	@Instance(Reference.MOD_NAME)
 	public static Chocolatecraft instance;
 	@SidedProxy(clientSide="com.cbouton.chocolatecraft.ChocolatecraftClientProxy", serverSide="com.cbouton.chocolatecraft.ChocolatecraftCommonProxy")
 	public static ChocolatecraftCommonProxy proxy;
+	public static Fluid fluidchocolate;
+	
 	
 		
 	
@@ -68,7 +77,8 @@ public class Chocolatecraft {
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
 		ModItems.init();
-		//ModBlocks.init();
+		ModBlocks.init();
+		
 		MinecraftForge.EVENT_BUS.register(new EntityInteractionHandler());
 	}
 	
