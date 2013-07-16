@@ -25,28 +25,31 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
 package com.cbouton.chocolatecraft.blocks;
 
 import java.util.HashMap;
-import java.util.Random;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
 
 import com.cbouton.chocolatecraft.lib.BlockStatics;
 import com.cbouton.chocolatecraft.lib.Reference;
+import com.cbouton.chocolatecraft.tileentities.TileEntityMixer;
+import com.cbouton.chocolatecraft.tileentities.TileEntitySeparator;
 import com.cbouton.chocolatecraft.utils.Position;
 import com.cbouton.chocolatecraft.utils.Utils;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockFurnace;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
-
-public class BlockSeparator extends Block{
+public class BlockSeparator extends BlockContainer{
 	public HashMap separatoractive = new HashMap();
 
 	public BlockSeparator(int id) {
@@ -55,37 +58,6 @@ public class BlockSeparator extends Block{
 		setStepSound(soundMetalFootstep);
 		setHardness(5.0F);
 		setCreativeTab(CreativeTabs.tabRedstone);
-	}
-	
-	
-    public void setactive(World world, int x, int y, int z){
-    	String block = world.toString() + "," + x + "," + y + "," + z;
-    	separatoractive.put(block, true);
-    	int newMeta = world.getBlockMetadata(x, y, z) + 7;
-		world.setBlockMetadataWithNotify(x, y, z, newMeta, 1);
-	}
-    
-    public void setinactive(World world, int x, int y, int z){
-    	String block = world.toString() + "," + x + "," + y + "," + z;
-    	separatoractive.remove(block);
-    	int newMeta = world.getBlockMetadata(x, y, z) - 7;
-		world.setBlockMetadataWithNotify(x, y, z, newMeta, 2);
-	}
-    
-    public void toggleactive(World world, int x, int y, int z){
-    	String block = world.toString() + "," + x + "," + y + "," + z;
-    	if (getactive(world, x, y, z)){
-    		setinactive(world, x, y, z);
-    	} else {
-    		setactive(world, x, y, z);
-    	}
-		
-	}
-    
-    public boolean getactive(World world, int x, int y, int z){
-    	String block = world.toString() + "," + x + "," + y + "," + z;
-    	boolean active = separatoractive.containsKey(block);
-		return active;
 	}
     
 	
@@ -119,13 +91,27 @@ public class BlockSeparator extends Block{
 		world.setBlockMetadataWithNotify(i, j, k, orientation.getOpposite().ordinal(),1);
     }
     
+    
+    @SideOnly(Side.CLIENT)
     @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, int id){
-    	if (!world.isRemote && world.isBlockIndirectlyGettingPowered(x, y, z) && world.getBlockMetadata(x, y, z) < 7){
-    		setactive(world, x, y, z);
-    	} else if (!world.isRemote && world.getBlockMetadata(x, y, z) >= 7){
-    		setinactive(world, x, y, z);
+    public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side){
+    	int metaData = world.getBlockMetadata(x, y, z);
+    	TileEntitySeparator separator = (TileEntitySeparator)world.getBlockTileEntity(x, y, z);
+    	if (side == 0){
+    		return sideIcon;
     	}
+    	else if (side == 1){
+    		return separator.isActive() ? activetopIcon : topIcon;
+    	}
+    	else if (metaData == 0 && side == 3){
+			return frontIcon;
+    	}
+    	else if (side == metaData && side > 1) {
+			return separator.isActive() ? activefrontIcon : frontIcon;	
+		}
+    	else{
+    		return sideIcon;
+    	}    	
     }
     
     @SideOnly(Side.CLIENT)
@@ -134,11 +120,8 @@ public class BlockSeparator extends Block{
     	if (side == 0){
     		return sideIcon;
     	}
-    	else if (side == 1 && metaData < 7){
+    	else if (side == 1){
     		return topIcon;
-    	}
-    	else if (side == 1 && metaData >= 7){
-    		return activetopIcon;
     	}
     	else if (metaData == 0 && side == 3){
 			return frontIcon;
@@ -146,15 +129,16 @@ public class BlockSeparator extends Block{
 
     	else if (side == metaData && side > 1) {
 			return frontIcon;
-			
-		}
-    	else if (side == metaData-7 && side > 1) {
-			return activefrontIcon;
 		}
     	else{
     		return sideIcon;
     	}
     }
+    
+    @Override
+	public TileEntity createNewTileEntity(World world) {
+		return new TileEntitySeparator();
+	}
 	
 
 }

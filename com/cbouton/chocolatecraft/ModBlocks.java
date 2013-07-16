@@ -26,8 +26,6 @@ package com.cbouton.chocolatecraft;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
@@ -38,7 +36,9 @@ import com.cbouton.chocolatecraft.blocks.BlockSeparator;
 import com.cbouton.chocolatecraft.fluids.FluidChocolate;
 import com.cbouton.chocolatecraft.lib.BlockStatics;
 import com.cbouton.chocolatecraft.lib.FluidStatics;
-import com.cbouton.chocolatecraft.lib.ItemStatics;
+import com.cbouton.chocolatecraft.tileentities.TileEntityGrinder;
+import com.cbouton.chocolatecraft.tileentities.TileEntityMixer;
+import com.cbouton.chocolatecraft.tileentities.TileEntitySeparator;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -57,8 +57,6 @@ public class ModBlocks {
 		fluidchocolate = new FluidChocolate(FluidStatics.FLUID_CHOCOLATE_NAME);
 		FluidRegistry.registerFluid(fluidchocolate);
 		blockfluidchocolate = new BlockFluidChocolate(BlockStatics.BLOCK_LIQUID_CHOCOLATE, fluidchocolate, Material.water);
-		//fluidchocolate.setBlockID(blockfluidchocolate);
-		
 		
 		
 		
@@ -69,6 +67,12 @@ public class ModBlocks {
 		LanguageRegistry.addName(blockgrinder, BlockStatics.BLOCK_GRINDER_NAME);
 		LanguageRegistry.addName(blockmixer, BlockStatics.BLOCK_MIXER_NAME);
 		LanguageRegistry.addName(blockseparator, BlockStatics.BLOCK_SEPARATOR_NAME);
+	}
+	
+	public static void registerTileEntities(){
+		GameRegistry.registerTileEntity(TileEntityGrinder.class, BlockStatics.BLOCK_GRINDER_TE);
+		GameRegistry.registerTileEntity(TileEntityMixer.class, BlockStatics.BLOCK_MIXER_TE);
+		GameRegistry.registerTileEntity(TileEntitySeparator.class, BlockStatics.BLOCK_SEPARATOR_TE);
 	}
 
 }

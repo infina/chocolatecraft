@@ -51,6 +51,10 @@ public class BlockStatics {
 	public static final String BLOCK_SEPARATOR_TOP_ACTIVE = "separator_top_active";
 	public static final String BLOCK_SEPARATOR_FRONT_ACTIVE = "separator_front_active";
 	
+	public static final String BLOCK_GRINDER_TE = "grinderTileEntity";
+	public static final String BLOCK_MIXER_TE = "mixerTileEntity";
+	public static final String BLOCK_SEPARATOR_TE = "separatorTileEntity";
+	
 	public static int BLOCK_GRINDER_DEFAULT = 2000;
 	public static int BLOCK_SEPARATOR_DEFAULT = 2001;
 	public static int BLOCK_MIXER_DEFAULT = 2002;
