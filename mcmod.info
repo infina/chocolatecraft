@@ -1,4 +1,6 @@
 {
+"modinfoversion": 2,
+"modlist": [{
 "modid": "Chocolatecraft",
 "name": "Chocolatecraft 2",
 "description": "Increasing the uses for cocoa beans by adding chocolate items.",
@@ -13,5 +15,7 @@
 "screenshots": [],
 "dependencies": [
 "mod_MinecraftForge"
+]
+}
 ]
 }
