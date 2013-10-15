@@ -33,9 +33,10 @@ import net.minecraft.util.DamageSource;
 
 public class TheobrominePoisoner {
 	
-	public static void PoisonEntity(EntityPlayer player, EntityLiving target){
-		target.attackEntityFrom(DamageSource.causePlayerDamage(player), 10);
-		//target.addPotionEffect(new PotionEffect(7, 10, 1, false));	
+	public static void PoisonEntity(EntityPlayer player, EntityLiving target, int damage){
+		target.attackEntityFrom(DamageSource.causePlayerDamage(player), damage);
+		
+		//target.addPotionEffect(new PotionEffect(7, 100, 0, false));	
 	}
 
 }

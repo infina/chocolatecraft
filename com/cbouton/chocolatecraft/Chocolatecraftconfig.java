@@ -83,15 +83,6 @@ public class Chocolatecraftconfig {
             ItemStatics.ITEM_HOTCOCOA_EFFECT_TIME = configuration
             		.getItem("Effect Time 1", ItemStatics.ITEM_HOTCOCOA_EFFECT_TIME_DEFAULT)
             		.getInt(ItemStatics.ITEM_HOTCOCOA_EFFECT_TIME_DEFAULT);
-            BlockStatics.BLOCK_GRINDER = configuration
-            		.getBlock("Grinder", BlockStatics.BLOCK_GRINDER_DEFAULT)
-            		.getInt(BlockStatics.BLOCK_GRINDER_DEFAULT);
-            BlockStatics.BLOCK_MIXER = configuration
-            		.getBlock("Mixer", BlockStatics.BLOCK_MIXER_DEFAULT)
-            		.getInt(BlockStatics.BLOCK_MIXER_DEFAULT);
-            BlockStatics.BLOCK_SEPARATOR = configuration
-            		.getBlock("Separator", BlockStatics.BLOCK_SEPARATOR_DEFAULT)
-            		.getInt(BlockStatics.BLOCK_SEPARATOR_DEFAULT);
             BlockStatics.BLOCK_LIQUID_CHOCOLATE = configuration
             		.getBlock("Liquid Chocolate", BlockStatics.BLOCK_LIQUID_CHOCOLATE_DEFAULT)
             		.getInt(BlockStatics.BLOCK_LIQUID_CHOCOLATE_DEFAULT);

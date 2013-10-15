@@ -26,43 +26,7 @@ package com.cbouton.chocolatecraft.lib;
 
 public class BlockStatics {
 	
-	public static final String BLOCK_GRINDER_UNLOCALIZEDNAME = "blockgrinder";
-	public static final String BLOCK_SEPARATOR_UNLOCALIZEDNAME = "blockseparator";
-	public static final String BLOCK_MIXER_UNLOCALIZEDNAME = "blockmixer";
-	
-	public static final String BLOCK_GRINDER_NAME = "Grinder";
-	public static final String BLOCK_SEPARATOR_NAME = "Separator";
-	public static final String BLOCK_MIXER_NAME = "Mixer";
-	
-	public static final String BLOCK_MACHINE_SIDES = "machine_sides";
-	
-	public static final String BLOCK_GRINDER_TOP = "grinder_top";
-	public static final String BLOCK_GRINDER_FRONT = "grinder_front";
-	public static final String BLOCK_GRINDER_TOP_ACTIVE = "grinder_top_active";
-	public static final String BLOCK_GRINDER_FRONT_ACTIVE = "grinder_front_active";
-	
-	public static final String BLOCK_MIXER_TOP = "mixer_top";
-	public static final String BLOCK_MIXER_FRONT = "mixer_front";
-	public static final String BLOCK_MIXER_TOP_ACTIVE = "mixer_top_active";
-	public static final String BLOCK_MIXER_FRONT_ACTIVE = "mixer_front_active";
-	
-	public static final String BLOCK_SEPARATOR_TOP = "separator_top";
-	public static final String BLOCK_SEPARATOR_FRONT = "separator_front";
-	public static final String BLOCK_SEPARATOR_TOP_ACTIVE = "separator_top_active";
-	public static final String BLOCK_SEPARATOR_FRONT_ACTIVE = "separator_front_active";
-	
-	public static final String BLOCK_GRINDER_TE = "grinderTileEntity";
-	public static final String BLOCK_MIXER_TE = "mixerTileEntity";
-	public static final String BLOCK_SEPARATOR_TE = "separatorTileEntity";
-	
-	public static int BLOCK_GRINDER_DEFAULT = 2000;
-	public static int BLOCK_SEPARATOR_DEFAULT = 2001;
-	public static int BLOCK_MIXER_DEFAULT = 2002;
 	public static int BLOCK_LIQUID_CHOCOLATE_DEFAULT = 2003;
 
-	
-	public static int BLOCK_GRINDER;
-	public static int BLOCK_SEPARATOR;
-	public static int BLOCK_MIXER;
 	public static int BLOCK_LIQUID_CHOCOLATE;
 }

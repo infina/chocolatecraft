@@ -56,8 +56,8 @@ public class EntityInteractionHandler {
 	@ForgeSubscribe
 	public void onEntityInteractEvent(EntityInteractEvent event) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		if (event.target instanceof EntityWolf && event.entityPlayer.getHeldItem() != null){
-			if (event.entityPlayer.getHeldItem().getItemName().equals("item.chocolatebar")){
-					TheobrominePoisoner.PoisonEntity(event.entityPlayer, ((EntityLiving)event.target));
+			if (event.entityPlayer.getHeldItem().getUnlocalizedName().equals("item.chocolatebar")){
+					TheobrominePoisoner.PoisonEntity(event.entityPlayer, ((EntityLiving)event.target), 5);
 					EntityWolf wolf = (EntityWolf) event.target;
 					String owner = wolf.getOwnerName();
 					if ((owner.length() != 0 || event.entityPlayer.getEntityName() != "_infina_") && ChocolatecraftBooleans.LOG_POISON){
@@ -66,11 +66,11 @@ public class EntityInteractionHandler {
 			}
 		}
 		else if (event.target instanceof EntityOcelot && event.entityPlayer.getHeldItem() != null){
-			if (event.entityPlayer.getHeldItem().getItemName().equals("item.chocolatebar")){
+			if (event.entityPlayer.getHeldItem().getUnlocalizedName().equals("item.chocolatebar")){
 				int randint = (int) Math.round(Math.random() * 4);
 				event.entityPlayer.getHeldItem().stackSize = event.entityPlayer.getHeldItem().stackSize - 1;
 				if (randint == 4){
-					TheobrominePoisoner.PoisonEntity(event.entityPlayer, ((EntityLiving)event.target));
+					TheobrominePoisoner.PoisonEntity(event.entityPlayer, ((EntityLiving)event.target), 10);
 					EntityOcelot cat = (EntityOcelot) event.target;
 					String owner = cat.getOwnerName();
 					if ((owner.length() != 0 || event.entityPlayer.getEntityName() != "_infina_") && ChocolatecraftBooleans.LOG_POISON){
@@ -80,7 +80,7 @@ public class EntityInteractionHandler {
 			}
 		}
 			else if (event.target instanceof EntityVillager && event.entityPlayer.getHeldItem() != null){
-			if (event.entityPlayer.getHeldItem().getItemName().equals("item.chocolatebar")){
+			if (event.entityPlayer.getHeldItem().getUnlocalizedName().equals("item.chocolatebar")){
 				EntityVillager villager = (EntityVillager) event.target;
 				villager.heal(4);
 				event.entityPlayer.inventory.addItemStackToInventory(new ItemStack(Item.emerald, 2));

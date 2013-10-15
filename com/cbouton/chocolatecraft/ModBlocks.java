@@ -26,53 +26,32 @@ package com.cbouton.chocolatecraft;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemDye;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 
 import com.cbouton.chocolatecraft.blocks.BlockFluidChocolate;
-import com.cbouton.chocolatecraft.blocks.BlockGrinder;
-import com.cbouton.chocolatecraft.blocks.BlockMixer;
-import com.cbouton.chocolatecraft.blocks.BlockSeparator;
 import com.cbouton.chocolatecraft.fluids.FluidChocolate;
+import com.cbouton.chocolatecraft.items.ItemChocolate;
 import com.cbouton.chocolatecraft.lib.BlockStatics;
-import com.cbouton.chocolatecraft.lib.FluidStatics;
-import com.cbouton.chocolatecraft.tileentities.TileEntityGrinder;
-import com.cbouton.chocolatecraft.tileentities.TileEntityMixer;
-import com.cbouton.chocolatecraft.tileentities.TileEntitySeparator;
+import com.cbouton.chocolatecraft.lib.ItemStatics;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
+import forestry.api.recipes.ISqueezerManager;
+import forestry.api.recipes.RecipeManagers;
 
 public class ModBlocks {
-	public static Block blockgrinder;
-	public static Block blockmixer;
-	public static Block blockseparator;
 	public static Block blockfluidchocolate;
 	public static Fluid fluidchocolate;
+	public static ItemStack[] itemStacks = {new ItemStack(358, 1, 3)};
+	public static ItemChocolate itemChocolate = new ItemChocolate(ItemStatics.ITEM_CHOCOLATE);
+	public static ItemStack itemstackChocolate = new ItemStack(itemChocolate);
 
 	public static void init() {
-		blockgrinder = new BlockGrinder(BlockStatics.BLOCK_GRINDER);
-		blockmixer = new BlockMixer(BlockStatics.BLOCK_MIXER);
-		blockseparator = new BlockSeparator(BlockStatics.BLOCK_SEPARATOR);
-		fluidchocolate = new FluidChocolate(FluidStatics.FLUID_CHOCOLATE_NAME);
 		FluidRegistry.registerFluid(fluidchocolate);
 		blockfluidchocolate = new BlockFluidChocolate(BlockStatics.BLOCK_LIQUID_CHOCOLATE, fluidchocolate, Material.water);
-		
-		
-		
-		GameRegistry.registerBlock(blockgrinder, BlockStatics.BLOCK_GRINDER_UNLOCALIZEDNAME);
-		GameRegistry.registerBlock(blockmixer, BlockStatics.BLOCK_MIXER_UNLOCALIZEDNAME);
-		GameRegistry.registerBlock(blockseparator, BlockStatics.BLOCK_SEPARATOR_UNLOCALIZEDNAME);
-		
-		LanguageRegistry.addName(blockgrinder, BlockStatics.BLOCK_GRINDER_NAME);
-		LanguageRegistry.addName(blockmixer, BlockStatics.BLOCK_MIXER_NAME);
-		LanguageRegistry.addName(blockseparator, BlockStatics.BLOCK_SEPARATOR_NAME);
+		RecipeManagers.squeezerManager.addRecipe(3, itemStacks, new FluidStack(fluidchocolate, 100), itemstackChocolate, 25);
 	}
 	
-	public static void registerTileEntities(){
-		GameRegistry.registerTileEntity(TileEntityGrinder.class, BlockStatics.BLOCK_GRINDER_TE);
-		GameRegistry.registerTileEntity(TileEntityMixer.class, BlockStatics.BLOCK_MIXER_TE);
-		GameRegistry.registerTileEntity(TileEntitySeparator.class, BlockStatics.BLOCK_SEPARATOR_TE);
-	}
-
 }
